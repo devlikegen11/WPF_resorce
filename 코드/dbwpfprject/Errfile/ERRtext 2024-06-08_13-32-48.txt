@@ -1,0 +1,4 @@
+오류발생
+cpu : 6
+memory : 0
+disk : 0

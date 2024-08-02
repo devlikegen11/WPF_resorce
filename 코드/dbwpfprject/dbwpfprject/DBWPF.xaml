@@ -1,0 +1,59 @@
+﻿<Page x:Class="dbwpfprject.DBWPF"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:dbwpfprject"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="DBWPF">
+
+    <Grid Background="Black">
+        <lvc:CartesianChart Margin="0,168,10,0">
+            <lvc:CartesianChart.Series>
+                <lvc:LineSeries Values="{Binding CpuValues}" Title="CPU Usage"/>
+                <lvc:LineSeries Values="{Binding MemValues}" Title="Memory Usage"/>
+                <lvc:LineSeries Values="{Binding DiskValues}" Title="Disk Usage"/>
+            </lvc:CartesianChart.Series>
+        </lvc:CartesianChart>
+        <lvc:Gauge x:Name="cpugauge" Grid.Row="0" Grid.Column="0" Margin="10,20,606,305"
+                   Uses360Mode="True"
+                   From="0" To="100" Foreground="White">
+            <lvc:Gauge.GaugeBackground>
+                <SolidColorBrush Color="White" Opacity="0.1"/>
+            </lvc:Gauge.GaugeBackground>
+        </lvc:Gauge>
+        <Button x:Name="startbut" Content="START" HorizontalAlignment="Left" Margin="642,10,0,0" VerticalAlignment="Top" Height="48" Width="130" Click="startbut_Click" FontSize="16" FontWeight="Bold">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <lvc:Gauge x:Name="memguage"
+                   From="0" To="100"
+                   LabelsVisibility="Collapsed" Margin="206,10,405,305" Foreground="#FFEFEFEF" GaugeActiveFill="#FF98C1D9">
+            <lvc:Gauge.GaugeBackground>
+                <SolidColorBrush Color="White" Opacity="0.1"/>
+            </lvc:Gauge.GaugeBackground>
+        </lvc:Gauge>
+        <lvc:Gauge x:Name="diskguage"
+            From="0" To="100"
+            LabelsVisibility="Collapsed" Margin="415,10,196,305" Foreground="#FFEFEFEF" GaugeActiveFill="#FFEE6C4D">
+            <lvc:Gauge.GaugeBackground>
+                <SolidColorBrush Color="White" Opacity="0.1"/>
+            </lvc:Gauge.GaugeBackground>
+        </lvc:Gauge>
+        <Label Content="디스크" HorizontalAlignment="Left" Height="26" Margin="64,136,0,0" VerticalAlignment="Top" Width="62" Foreground="#FFEFEFEF" FontWeight="Bold" FontSize="16"/>
+        <Label Content="메모리" HorizontalAlignment="Left" Height="26" Margin="261,135,0,0" VerticalAlignment="Top" Width="66" Foreground="#FFEFEFEF" FontWeight="Bold" FontSize="16"/>
+        <Label Content="CPU" HorizontalAlignment="Left" Height="31" Margin="478,131,0,0" VerticalAlignment="Top" Width="48" Foreground="#FFEFEFEF" FontWeight="Bold" FontSize="16"/>
+        <Button x:Name="pastlog" Content="조   회" HorizontalAlignment="Left" Margin="642,82,0,0" VerticalAlignment="Top" Height="48" Width="130" Click="pastlog_Click" FontSize="16" FontWeight="Bold">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Page>
